@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:mockService id="43a77586-8bcf-4ca2-984a-ad2c9d173ff7" port="8088" path="/mockHelloServiceSoapBinding" host="ASUS" name="Mocks" bindToHostOnly="false" docroot="" faultMockOperation="sayHello" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties><con:property><con:name>version</con:name><con:value>1.0</con:value></con:property></con:properties><con:mockOperation name="sayHello" id="dcaa4143-2278-4897-a995-8433307ade6b" interface="HelloServiceSoapBinding" operation="sayHello"><con:settings/><con:defaultResponse>Default</con:defaultResponse><con:dispatchStyle>SCRIPT</con:dispatchStyle><con:dispatchPath>import com.eviware.soapui.support.XmlHolder
+def holder = new XmlHolder( mockRequest.requestContent )
+def name = holder["//name"]
+
+if (name == "Bhowmik"){
+    return "Bhowmik Response"
+} else if (name == "Anindya"){
+    return "Anindya Response"
+} else {
+    return "Default"
+}</con:dispatchPath><con:response name="Bhowmik Response" id="fc6d3b18-f955-4294-a88d-fa8e2c414b5a" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hel="http://www.example.com/hello">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <hel:sayHelloResponse>
+         <!--Optional:-->
+         <sayHello>Hello Bhowmik</sayHello>
+      </hel:sayHelloResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.com/hello/HelloService/sayHelloResponse"/></con:response><con:response name="Anindya Response" id="d85a77c7-db4f-4450-8a5b-29ae17fab6f3" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hel="http://www.example.com/hello">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <hel:sayHelloResponse>
+         <!--Optional:-->
+         <sayHello>Anindya Hello</sayHello>
+      </hel:sayHelloResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.com/hello/HelloService/sayHelloResponse"/></con:response><con:response name="Default" id="36762e68-8fb3-4744-9249-d5502495b7cb" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hel="http://www.example.com/hello">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <hel:sayHelloResponse>
+         <!--Optional:-->
+         <sayHello>Hello World</sayHello>
+      </hel:sayHelloResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.com/hello/HelloService/sayHelloResponse"/></con:response><con:dispatchConfig xsi:type="con:MockOperationQueryMatchDispatch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:query><con:name>Bhowmik</con:name><con:query>declare namespace hel='http://www.example.com/hello';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+//hel:sayHello/name
+</con:query><con:match>Bhowmik</con:match><con:response>Bhowmik Response</con:response></con:query><con:query><con:name>Anindya</con:name><con:query>declare namespace hel='http://www.example.com/hello';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+//hel:sayHello/name
+</con:query><con:match>Anindya</con:match><con:response>Anindya Response</con:response></con:query><con:query><con:name>Default</con:name><con:query>declare namespace hel='http://www.example.com/hello';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+//hel:sayHello/name
+</con:query><con:match>?</con:match><con:response>Default</con:response></con:query></con:dispatchConfig></con:mockOperation></con:mockService>
